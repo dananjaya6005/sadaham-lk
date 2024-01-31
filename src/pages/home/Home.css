@@ -1,0 +1,23 @@
+/* .bigLogoImage {
+    animation: colorChange 6s infinite;
+    transition: 2000ms;
+  }
+  
+  @keyframes colorChange {
+    0% {
+      filter: drop-shadow(0 0 2em rgb(137, 167, 248), 0.4);
+    }
+    25% {
+      filter: drop-shadow(0 0 2em rgb(250, 168, 67));
+    }
+    50% {
+      filter: drop-shadow(0 0 2em rgb(0, 149, 255));
+    }
+  } */
+
+  .bigLogoImage  :hover {
+    animation: none;
+    filter: drop-shadow(0 0 2em rgb(137, 167, 248));
+  }
+
+  

@@ -45,7 +45,7 @@ const components: { title: string; href: string; description: string }[] = [
       "චරිත ස්වභාවය අනුව භාවනා කිරීම සඳහා කමටහන් තෝරා ගැනීම වැදගත් වන අතර භාවනාවට අවශ්‍ය මූලික අවබෝධයත්, පසුබිමත්, සීලයත්, සම්පූර්ණ කොට ගෙන අනතුරුව සමාධි හා විපස්සනා භාවනා ක්‍රම දෙකින් සමාධි භාවනාව ආරම්භ කිරීම යෝග්‍ය වේ.",
   },
   {
-    title: "සාකච්චා",
+    title: "සාකච්ඡා",
     href: "/docs/primitives/tooltip",
     description:
       "ධර්ම සාකච්චා සවන්දීමට මෙතනින්",
@@ -54,11 +54,11 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <NavigationMenu className="bg-red-200" >
+    <NavigationMenu className="" >
       <NavigationMenuList>
 
       <NavigationMenuItem>
-         <Link to="/doc">
+         <Link to="/">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
             මුල් පිටුව
             </NavigationMenuLink>
@@ -67,7 +67,7 @@ export function NavigationMenuDemo() {
 
 
         <NavigationMenuItem>
-         <Link to="/doc">
+         <Link to="/bio">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
             චරිතාපදානය
             </NavigationMenuLink>
@@ -77,7 +77,7 @@ export function NavigationMenuDemo() {
 
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger>පටිගත</NavigationMenuTrigger>
+          <NavigationMenuTrigger>දේශනා</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
@@ -131,7 +131,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-bold leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <p className="line-clamp-2 text-sm text-slate-500 leading-snug text-muted-foreground">
             {children}
           </p>
         </a>
