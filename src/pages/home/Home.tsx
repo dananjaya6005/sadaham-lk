@@ -3,7 +3,10 @@ import { createClient } from "@supabase/supabase-js";
 import sadaham_lk_bg from "../../assets/sadaham_lk_bg.png";
 import ayanna_logo from "../../assets/ayannaLogo.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import './Home.css';
+import "./Home.css";
+import { FaCirclePlay } from "react-icons/fa6";
+import { IoMdTime } from "react-icons/io";
+
 //banner_logo_start_from_here
 import abhidarma from "../../assets/BannerLogo/adiadarmaya.png";
 import anumondana from "../../assets/BannerLogo/anumodana.png";
@@ -14,11 +17,11 @@ import kamatahan from "../../assets/BannerLogo/kamatahan.png";
 import sakachcha from "../../assets/BannerLogo/sakachchana.png";
 import suthra from "../../assets/BannerLogo/suthra.png";
 import winaya from "../../assets/BannerLogo/winaya.png";
-
-import sadaham_bg_2 from "../../assets/sadaham_bg_2.jpg";
-import sadaham_bg_3 from "../../assets/sadaham_bg_3.png";
-import sadahambg_4 from "../../assets/sadaham_bg_4.png";
-import sadaham_bg_5 from "../../assets/bg_1_sadaham.png";
+import bawana_books from "../../assets/BannerLogo/bwana_books.png";
+import wandana_books from "../../assets/BannerLogo/wandana_books.png";
+import swameenWahanse from "../../assets/swaminwahanse_logo.png";
+import damma_icon from "../../assets/icon_damma.png";
+import lotus_end_img from "../../assets/lotus_end_img.png";
 
 const supabase = createClient(
   "https://pfcpiefhtaayktqkegvm.supabase.co",
@@ -26,7 +29,6 @@ const supabase = createClient(
 );
 
 const damma_karunu_banner = [
-  
   {
     image: suthra,
     link: "/suthra",
@@ -67,8 +69,30 @@ const damma_karunu_banner = [
     image: sakachcha,
     link: "/sakachcha",
   },
+];
 
+const nitharaAsana = [
+  {
+    title: "මේ ජීවිතයේදීම සෝවාන් ඵලය ලබමු",
+    time: "12:10",
+    link: "/swameenWahanse",
+  },
+  {
+    title: "පසුතැවෙන ඔබගේ මුලු ජීවිතයම වාසනාවන්ත, පුන්‍යවන්ත කරගන්නා ආකාරය",
+    time: "09:25",
+    link: "/swameenWahanse",
+  },
+  {
+    title: "සැමට ආකර්ෂනීය පුද්ගලයෙක් වීමේ පියවර",
+    time: "22:55",
+    link: "/swameenWahanse",
+  },
 
+  {
+    title: "කර්මය අපගේ ජීවිතයට බලපාන ආකාරය",
+    time: "42:21",
+    link: "/swameenWahanse",
+  },
 ];
 
 const Theme1 = [
@@ -212,41 +236,126 @@ const Home = () => {
             <p className="text-center mt-10 mb-4 text-white ">
               චිරං තිට්ඨතු ලෝකස්මිං - සම්මා සම්බුද්ධ සාසනං ෴
             </p>
-            <p className="text-center  text-white">සම්බුදු සසුන ලෝතුල බොහෝ කල් පවතීවා</p>
-            
+            <p className="text-center  text-white">
+              සම්බුදු සසුන ලෝතුල බොහෝ කල් පවතීවා
+            </p>
           </div>
         </div>
       </div>
 
       <div className=" flex justify-center ">
-        <Tabs defaultValue="deshana" className="w-[70%]  flex my-6 flex-col justify-center items-center ">
+        <Tabs
+          defaultValue="deshana"
+          className="w-[70%]  flex my-6 flex-col justify-center items-center "
+        >
           <TabsList>
             <TabsTrigger value="deshana">දේශනා</TabsTrigger>
             <TabsTrigger value="poth">පොත්</TabsTrigger>
           </TabsList>
           <TabsContent value="deshana">
-
-          <div>
-        <div className="flex flex-wrap justify-center  w-[100%]">
-          {damma_karunu_banner.map((item: any) => (
-            <div className="m-5">
+            <div>
+              <div className="flex flex-wrap justify-center  w-[100%]">
+                {damma_karunu_banner.map((item: any) => (
+                  <div className="m-5">
+                    <img
+                      src={item.image}
+                      alt="logo"
+                      className="w-28 h-28 shadow-lg object-cover border-2 border-amber-700 rounded-lg cursor-pointer 
+                hover:scale-110 transition duration-500 ease-in-out hover:drop-shadow-[0_35px_35px_rgba(204,102,0,0.4)] "
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </TabsContent>
+          <TabsContent value="poth">
+            <div className="flex">
               <img
-                src={item.image}
+                src={bawana_books}
                 alt="logo"
-                className="w-28 h-28 shadow-lg object-cover border-2 border-amber-700 rounded-lg cursor-pointer 
+                className="w-40 rounded-md m-5  cursor-pointer 
+                hover:scale-110 transition duration-500 ease-in-out hover:drop-shadow-[0_35px_35px_rgba(204,102,0,0.4)] "
+              />
+              <img
+                src={wandana_books}
+                alt="logo"
+                className="w-40 rounded-md m-5   cursor-pointer 
                 hover:scale-110 transition duration-500 ease-in-out hover:drop-shadow-[0_35px_35px_rgba(204,102,0,0.4)] "
               />
             </div>
-          ))}
-        </div>
-      </div>
-
           </TabsContent>
-          <TabsContent value="poth">Change your password here.</TabsContent>
         </Tabs>
       </div>
 
-    
+      <div className=" flex justify-center my-10  ">
+        <div className="flex w-[80%]  ">
+          <div className="flex">
+            <div>
+              <h1 className="text-lg font-semibold my-8 text-slate-800 ">
+                අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ
+              </h1>
+              <p className="w-[90%] leading-loose ">
+                ශ්‍රී කල්‍යාණි යෝගාශ්‍රම සංස්ථාවේ සමුත්පාදක කඩවැද්දුව ශ්‍රී
+                ජිනවංසාභිධාන මාහිමිපාණන් වහන්සේ විසින් 'යෝගාශ්‍රම සංස්ථාවේ හදවත'
+                යනුවෙන් හඳුන්වා සම්භාවනාවට පාත්‍ර කරන ලද්දා වූ ශ්‍රීමත් සුගත
+                තථාගත ශ්‍රී සම්බුද්ධ පාදස්පර්ෂයෙන් පරම පවිත්‍රත්වයට පත් වූ ජය
+                භූමිය වන මේ ශ්‍රී ලංකාද්වීපයෙහි ත්‍රිවිධ ශාසනභාරධාරීව වැඩවිසූ
+                ශ්‍රී කල්‍යාණි යෝගාශ්‍රම සංස්ථාධිපති, ප්‍රධාන අනුශාසක මහා
+                බෝධිසත්ව ගුණ සමන්වාගත අතිපූජනීය නාඋයනේ අරියධම්මාභිධාන ශ්‍රී ලංකා
+                රාමඤ්ඤ මහා නිකායේ අනුනායක මාහිමිපාණන් වහන්සේගේ ජීවන තොරතුරු
+                හිරුසඳු සෙයින් බෞද්ධ ලෝකයා අතර අතිශයින් ප්‍රකටව පවතින නමුදු, ඒ
+                මහෝත්තම ජීවන චරිතය සංක්ෂිප්තව මෙහි සටහන් කොට තබනුයේ එය සටහන්
+                නොකිරීමෙන් මෙම ලිපිපෙළ රන්කොත ගිලිහී ගිය සෑයක් සෙයින් ඌනභාවයට
+                පත් වන බැවිනි.
+              </p>
+              <p className="text-blue-600 font-semibold my-5 cursor-pointer ">
+                තවත් කියවන්න
+              </p>
+            </div>
+            <img
+              src={swameenWahanse}
+              alt="logo"
+              className="w-80 rounded-lg shadow-lg "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className=" flex justify-center">
+        <div className="w-[80%] ">
+          <p className="font-semibold">නිතර ශ්‍රවණය කරන දහම් කරුණු</p>
+
+          <div className="my-5">
+            {nitharaAsana.map((item: any) => {
+              return (
+                <div key={item.id}>
+                  <div className="flex flex-row items-center border-b-2 py-2 justify-between  ">
+                    <div className=" items-center flex">
+                      <img src={damma_icon} alt="" className="w-6 h-6" />
+                      <p className=" py-2 italic text-sm mx-4">{item.title}</p>
+                    </div>
+
+                    <div className="flex items-center mr-20 ">
+                      <IoMdTime className="mx-2" />
+
+                      <p className="mr-8 text-slate-600">{item.time}</p>
+                      <FaCirclePlay
+                        className="cursor-pointer mx-5"
+                        size={35}
+                        color="#663300"
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="my-10 flex justify-center">
+        <img src={lotus_end_img} alt="" className="w-40 opacity-90" />
+      </div>
     </>
   );
 };

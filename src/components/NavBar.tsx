@@ -2,10 +2,23 @@ import React from 'react';
 import { NavigationMenuDemo } from '../components/NavigationMenuDemo';
 import sadahamlk from '../assets/sadaham_logo.png';
 import { useNavigate } from 'react-router';
+import {useUser,} from "@clerk/clerk-react";
 
 const NavBar = ()=>{
 
     const navigate = useNavigate();
+    const {  isSignedIn } = useUser();
+
+
+    const handleAuthLogic = ()=>{
+        if(isSignedIn){
+            navigate('/settings');
+        }
+        else{
+            navigate('/login');
+        }
+    }
+
     
     return(
         <>
@@ -14,7 +27,7 @@ const NavBar = ()=>{
         <NavigationMenuDemo/>
         
        
-        <p  className='mx-5 cursor-pointer ' onClick={()=>{navigate('/settings')}} >පිවිසෙන්න</p>
+        <p  className='mx-5 cursor-pointer ' onClick={()=>{handleAuthLogic()}} >පිවිසෙන්න</p>
         
         </div>
         
