@@ -20,4 +20,14 @@
     filter: drop-shadow(0 0 2em rgb(137, 167, 248));
   }
 
-  
+.handle_hero_responsive{
+  height: 50vh;
+
+}
+
+
+@media screen and (max-width: 400px) {
+  .handle_hero_responsive{
+    height: 60vh;
+  }
+}

@@ -1,11 +1,23 @@
+//@ts-nocheck
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import sadaham_lk_bg from "../../assets/sadaham_lk_bg.png";
 import ayanna_logo from "../../assets/ayannaLogo.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import "./Home.css";
 import { FaCirclePlay } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
+import ReactAudioPlayer from "react-audio-player";
+
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 //banner_logo_start_from_here
 import abhidarma from "../../assets/BannerLogo/adiadarmaya.png";
@@ -75,12 +87,12 @@ const nitharaAsana = [
   {
     title: "මේ ජීවිතයේදීම සෝවාන් ඵලය ලබමු",
     time: "12:10",
-    link: "/swameenWahanse",
+    link: "https://sharedby.blomp.com/oMKqXx",
   },
   {
     title: "පසුතැවෙන ඔබගේ මුලු ජීවිතයම වාසනාවන්ත, පුන්‍යවන්ත කරගන්නා ආකාරය",
     time: "09:25",
-    link: "/swameenWahanse",
+    link: "https://sharedby.blomp.com/yLPtqW",
   },
   {
     title: "සැමට ආකර්ෂනීය පුද්ගලයෙක් වීමේ පියවර",
@@ -116,6 +128,8 @@ const Home = () => {
   const [ThemeAplly, setThemeAplly] = useState<any>([]);
   const [bgOpacity, setBgOpacity] = useState("");
   const [bgImage, setBgImage] = useState();
+
+  const [audioSrc, setAudioSrc] = useState("");
 
   useEffect(() => {
     getData();
@@ -198,7 +212,7 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "50vh",
+
           width: "100vw",
           display: "flex",
 
@@ -206,37 +220,42 @@ const Home = () => {
 
           // alignItems: 'center'
         }}
-        className=""
+        className="handle_hero_responsive"
       >
         <div
           className={`w-screen bg-black flex ${extractOpacityData()}  justify-center items-center`}
         >
-          <div className="w-[80%] flex jus flex-col ">
-            <p className="mt-10 text-2xl text-center font-bold  text-white">
+          <div className="w-[80%] flex jus flex-col max-[600px]:w-[95%] ">
+            <p className="mt-10 text-2xl text-center font-bold  text-white max-[500px]:text-xl ">
               අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ විසින් සිදුකරන ලද
               ධර්ම දාන
             </p>
 
-            <div className="flex rounded-md  mt-14 justify-center ">
-              <img
-                src={ayanna_logo}
-                alt="logo"
-                className="w-10 h-10 rounded-l-lg  cursor-pointer "
-              />
-              <input
-                type="text"
-                placeholder="දහම් කරුණු පිරික්සන්න ..."
-                className=" w-80  h-fit  px-5 py-2 shadow-lg rounded-r-lg "
-              />
-              <button className="bg-amber-400 h-fit text-slate-800 font-semibold px-5 py-2 rounded-lg shadow-lg ml-5  ">
+            <div className="flex rounded-md   mt-14 justify-center max-[500px]:flex-col  ">
+              <div className="flex">
+                <img
+                  src={ayanna_logo}
+                  alt="logo"
+                  className="w-10 h-10 rounded-l-lg  cursor-pointer "
+                />
+                <input
+                  type="text"
+                  placeholder="දහම් කරුණු පිරික්සන්න ..."
+                  className=" w-80  h-fit  px-5 py-2 shadow-lg rounded-r-lg "
+                />
+              </div>
+              <button
+                className="bg-amber-400 h-fit text-slate-800 font-semibold px-5 py-2 rounded-lg shadow-lg ml-5
+              max-[500px]:w-fit max-[500px]:self-center max-[500px]:mt-5 "
+              >
                 සොයන්න
               </button>
             </div>
 
-            <p className="text-center mt-10 mb-4 text-white ">
+            <p className="text-center mt-10 mb-4 text-white max-[500px]:text-sm ">
               චිරං තිට්ඨතු ලෝකස්මිං - සම්මා සම්බුද්ධ සාසනං ෴
             </p>
-            <p className="text-center  text-white">
+            <p className="text-center  text-white max-[500px]:text-sm ">
               සම්බුදු සසුන ලෝතුල බොහෝ කල් පවතීවා
             </p>
           </div>
@@ -246,7 +265,7 @@ const Home = () => {
       <div className=" flex justify-center ">
         <Tabs
           defaultValue="deshana"
-          className="w-[70%]  flex my-6 flex-col justify-center items-center "
+          className="w-[70%]  max-[600px]:w-[95%]  flex my-6 flex-col justify-center items-center "
         >
           <TabsList>
             <TabsTrigger value="deshana">දේශනා</TabsTrigger>
@@ -289,7 +308,7 @@ const Home = () => {
 
       <div className=" flex justify-center my-10  ">
         <div className="flex w-[80%]  ">
-          <div className="flex">
+          <div className="flex   max-[600px]:flex-col-reverse ">
             <div>
               <h1 className="text-lg font-semibold my-8 text-slate-800 ">
                 අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ
@@ -315,7 +334,7 @@ const Home = () => {
             <img
               src={swameenWahanse}
               alt="logo"
-              className="w-80 rounded-lg shadow-lg "
+              className="w-80 rounded-lg shadow-lg max-[600px]:w-full max-[600px]:mb-7 "
             />
           </div>
         </div>
@@ -339,11 +358,40 @@ const Home = () => {
                       <IoMdTime className="mx-2" />
 
                       <p className="mr-8 text-slate-600">{item.time}</p>
-                      <FaCirclePlay
+
+                      <Drawer>
+                        <DrawerTrigger>   <FaCirclePlay
+                        onClick={() => {
+                          setAudioSrc(item.link);
+                        }}
                         className="cursor-pointer mx-5"
                         size={35}
                         color="#663300"
                       />
+                      </DrawerTrigger>
+                        <DrawerContent>
+                          <DrawerHeader>
+                            <DrawerTitle>{item.title}</DrawerTitle>
+                            <DrawerDescription>
+                              <p className="text-xs">අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ විසින් සිදුකරන ලද දේශනාවකි.</p>
+                            
+                            </DrawerDescription>
+                          </DrawerHeader>
+                          <DrawerFooter>
+                            <ReactAudioPlayer
+                              src={audioSrc}
+                              autoPlay={true}
+                              muted={true}
+                              controls
+                            />
+                            <DrawerClose>
+                              <button>Close</button>
+                            </DrawerClose>
+                          </DrawerFooter>
+                        </DrawerContent>
+                      </Drawer>
+
+                   
                     </div>
                   </div>
                 </div>
@@ -356,6 +404,8 @@ const Home = () => {
       <div className="my-10 flex justify-center">
         <img src={lotus_end_img} alt="" className="w-40 opacity-90" />
       </div>
+
+      <div></div>
     </>
   );
 };

@@ -1,13 +1,14 @@
+//@ts-nocheck
 import { createClient } from "@supabase/supabase-js";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { MdLogout } from "react-icons/md";
 import { useClerk } from "@clerk/clerk-react";
 import { useNavigate } from "react-router";
-import ReactAudioPlayer from "react-audio-player";
-import { useRef } from "react";
+
 import { Input } from "@/components/ui/input";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 
 
@@ -34,10 +35,12 @@ export default function Settings() {
 
   const [name,setName] = useState('');
   const [description,setDescription] = useState('');  
-  const [tags,setTags] = useState('');
+  const [tags,setTags] = useState([] as string[]);
   const [link , setLink ] = useState('');
+  const [tempTag , setTempTag] = useState('');
 
 
+  console.log(tags)
 
 
 
@@ -69,7 +72,7 @@ export default function Settings() {
   async function storeData() {
     const { data } = await supabase
       .from('SadahamStore')
-      .insert({  name: 'dfdf' ,  description: 'fdfdfd' , tags : ['fd','fdf'] , link : 'dsds'})
+      .insert({  name: name ,  description: description , tags : tags , link : link})
       console.log(data)
 }
 
@@ -78,6 +81,11 @@ export default function Settings() {
     const { data } = await supabase.from("SadahamStore").select();
     console.log(data);
     setData(data);
+  }
+
+  function handleTagCLick(){
+    setTags([...tags,tempTag])
+    setTempTag('')
   }
   
 
@@ -88,7 +96,6 @@ export default function Settings() {
         සැකසුම් පිටුව
       </h1>
 
-      {tags}
 
       <div className=" flex justify-center  ">
         <div className=" flex justify-center flex-col  w-1/3	 " >
@@ -112,14 +119,67 @@ export default function Settings() {
           </div>
 
           <div className="grid w-full max-w-sm items-center gap-1.5 my-3 ">
+
+            <div className="my-2" >
+            <Select
+              onValueChange={(value) => {
+                setTags([value]);
+              }}
+            >
+              <SelectTrigger className="w-[300px]">
+                <SelectValue placeholder="ප්‍රධාන පටිගත වර්ගය තෝරන්න" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="සූත්‍ර">සූත්‍ර</SelectItem>
+                <SelectItem value="විනය">විනය</SelectItem>
+                <SelectItem value="අභිධර්මය">අභිධර්මය</SelectItem>
+                <SelectItem value="භාවනා">භාවනා</SelectItem>
+                <SelectItem value="කමටහන්">කමටහන්</SelectItem>
+                <SelectItem value="සාකච්ඡා">සාකච්ඡා</SelectItem>
+                
+              </SelectContent>
+            </Select>
+            </div>
+
             <Label className="my-2" htmlFor="tag">ටැග්</Label>
+            <div className="flex ">
             <Input
-              onChange={(e)=>setTags(e.target.value)}
+             value={tempTag}
+              onChange={(e)=>setTempTag(e.target.value)}
               type="text"
               id="tag"
               placeholder="උදා : කර්මය , ජීවිතය , ..."
             />
+
+              <IoIosAddCircleOutline 
+          onClick={() => {
+            handleTagCLick();
+          }}
+          className="bg-slate-700 p-2 rounded-lg ml-5 cursor-pointer "
+          size={40}
+          color="white"
+        />
+            </div>
+
+            <div className=" my-2 flex flex-wrap flex-row">
+              {
+                tags.map((tag)=>{
+                  return(
+                    <div >
+                    <div className="bg-slate-200 px-2 text-xs py-1 rounded-lg ml-5 w-fit my-1 ">{tag}</div>
+                    </div>
+                  )
+                })
+              }
+            </div>
+
+
+
+
+
           </div>
+
+          
 
           <div className="grid w-full max-w-sm items-center gap-1.5 my-3 ">
             <Label className="my-2" htmlFor="link">ගොනු යොමුව</Label>
