@@ -1,6 +1,7 @@
 
 import * as React from "react"
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { cn } from "@/lib/utils"
 
@@ -17,42 +18,58 @@ import {
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "සූත්‍ර",
-    href: "/docs/primitives/alert-dialog",
+    href: "/suthra",
     description:
       "මූලික වශයෙන් බුද්ධ භාෂිත අඩංගුවන කොටස් මුල් සූත්‍ර ග්‍රන්ථ නමින් හැඳින්වේ",
   },
   {
     title: "විනය",
-    href: "/docs/primitives/hover-card",
+    href: "/winaya",
     description:
       "භික්ෂු භික්ෂුණියන්ගේ පාලනය සඳහා බුදු රජාණන් වහන්සේ විසින් පැනවු ශික්ෂා පද, ප්‍රඥ්ප්ති, විනය කර්ම ආදිය විනය පිටකයේ අඩංගුය",
   },
   {
     title: "අභිධර්මය",
-    href: "/docs/primitives/progress",
+    href: "/abidarmaya",
     description:
       "භෞතික ලෝකයේ මායා රූපය තේරුම් ගැනීම. සඳහා අභිධර්මය උගෙනීමෙන් ලැබෙන්නේ මහඟු උපකාරයකි.",
   },
   {
     title: "භාවනා",
-    href: "/docs/primitives/scroll-area",
+    href: "/bawana",
     description: "භාවනා කිරීම යනු සිත දියුණු කරගන්නා සුවිශේෂී ක්‍රමයකටයි.",
   },
   {
-    title: "කමටහන්",
-    href: "/docs/primitives/tabs",
+    title: "අනුමෝදනා",
+    href: "/anumodhana",
     description:
-      "චරිත ස්වභාවය අනුව භාවනා කිරීම සඳහා කමටහන් තෝරා ගැනීම වැදගත් වන අතර භාවනාවට අවශ්‍ය මූලික අවබෝධයත්, පසුබිමත්, සීලයත්, සම්පූර්ණ කොට ගෙන අනතුරුව සමාධි හා විපස්සනා භාවනා ක්‍රම දෙකින් සමාධි භාවනාව ආරම්භ කිරීම යෝග්‍ය වේ.",
+      "පින්දීම සහ පින් අනුමෝදන් වීම ගැන දැනගන්න .",
   },
   {
     title: "සාකච්ඡා",
-    href: "/docs/primitives/tooltip",
+    href: "/darma_sakachcha",
     description:
       "ධර්ම සාකච්චා සවන්දීමට මෙතනින්",
+  },
+
+  {
+    title: "ධම්ම පදය",
+    href: "/dammapadaya",
+    description: "බොහෝ ගාථාවන් ධර්ම කරුණු හා සම්බන්ධය"
+  },
+
+  {
+    title: "අනුශාසනා",
+    href: "/anushasana",
+    description: "අනන්ත දුක් විඳිමින් භව ගමනක යෙදෙන සංසාරගත සත්ත්වයා දුකින් මුදා ඔසවා තැබීම පිණිස"
   },
 ]
 
 export function NavigationMenuDemo() {
+
+  const navigate = useNavigate();
+
+
   return (
     <NavigationMenu className="" >
       <NavigationMenuList>
@@ -82,9 +99,10 @@ export function NavigationMenuDemo() {
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
                 <ListItem
+                className=" cursor-pointer "
                   key={component.title}
                   title={component.title}
-                  href={component.href}
+                  onClick={()=>{navigate(component.href)}}
                 >
                   {component.description}
                 </ListItem>

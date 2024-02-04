@@ -7,6 +7,10 @@ import "./Home.css";
 import { FaCirclePlay } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
 import ReactAudioPlayer from "react-audio-player";
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import { useNavigate } from "react-router";
+import AudioPlayer from 'react-h5-audio-player';
+
 
 import {
   Drawer,
@@ -92,18 +96,18 @@ const nitharaAsana = [
   {
     title: "පසුතැවෙන ඔබගේ මුලු ජීවිතයම වාසනාවන්ත, පුන්‍යවන්ත කරගන්නා ආකාරය",
     time: "09:25",
-    link: "https://sharedby.blomp.com/yLPtqW",
+    link: "https://sharedby.blomp.com/6v2Jnc",
   },
   {
     title: "සැමට ආකර්ෂනීය පුද්ගලයෙක් වීමේ පියවර",
     time: "22:55",
-    link: "/swameenWahanse",
+    link: "https://sharedby.blomp.com/vek6Lq",
   },
 
   {
     title: "කර්මය අපගේ ජීවිතයට බලපාන ආකාරය",
     time: "42:21",
-    link: "/swameenWahanse",
+    link: "https://sharedby.blomp.com/iL409A",
   },
 ];
 
@@ -130,6 +134,11 @@ const Home = () => {
   const [bgImage, setBgImage] = useState();
 
   const [audioSrc, setAudioSrc] = useState("");
+
+
+  const [SearchData, setSearchData] = useState<any>();
+
+  const  navigate = useNavigate();
 
   useEffect(() => {
     getData();
@@ -204,6 +213,47 @@ const Home = () => {
   // console.log(bgOpacity);
   // console.warn(ThemeAplly[0]?.image);
 
+  function getOperatingSystem() {
+    let operatingSystem = 'Not known';
+    if (window.navigator.appVersion.indexOf('Win') !== -1) { operatingSystem = 'Windows OS'; }
+    if (window.navigator.appVersion.indexOf('Mac') !== -1) { operatingSystem = 'MacOS'; }
+    if (window.navigator.appVersion.indexOf('X11') !== -1) { operatingSystem = 'UNIX OS'; }
+    if (window.navigator.appVersion.indexOf('Linux') !== -1) { operatingSystem = 'Linux OS'; }
+    if (/Android/.test(navigator.userAgent)) { operatingSystem = 'Android'; }
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) { operatingSystem = 'iOS'; }
+    return operatingSystem;
+  }
+
+  const renderAudioPlayer = () => {
+    const os = getOperatingSystem();
+    if(os === 'Android' || os === 'Windows OS') {
+      return (
+      <div className=" flex justify-center">
+      <ReactAudioPlayer
+      className="w-1/2 max-[500px]:w-[95%] "
+      src={audioSrc}
+      autoPlay={true}
+      controls
+      />
+      </div>
+      );
+   }
+    else if(os === 'iOS') {
+      return (
+
+      <div className=" flex justify-center">
+      <audio controls className=""  >
+      <source src={audioSrc} type="audio/mpeg"/>
+      
+        Your browser does not support the audio element.
+      </audio> 
+      </div>
+      )
+    }
+  }
+
+
+
   return (
     <>
       <div
@@ -240,11 +290,13 @@ const Home = () => {
                 />
                 <input
                   type="text"
+                  onChange={(e)=>{setSearchData(e.target.value)}}
                   placeholder="දහම් කරුණු පිරික්සන්න ..."
                   className=" w-80  h-fit  px-5 py-2 shadow-lg rounded-r-lg "
                 />
               </div>
               <button
+              onClick={()=>{navigate('/search', {state : {SearchData}}) }}
                 className="bg-amber-400 h-fit text-slate-800 font-semibold px-5 py-2 rounded-lg shadow-lg ml-5
               max-[500px]:w-fit max-[500px]:self-center max-[500px]:mt-5 "
               >
@@ -275,7 +327,7 @@ const Home = () => {
             <div>
               <div className="flex flex-wrap justify-center  w-[100%]">
                 {damma_karunu_banner.map((item: any) => (
-                  <div className="m-5">
+                  <div className="m-5 ">
                     <img
                       src={item.image}
                       alt="logo"
@@ -292,13 +344,13 @@ const Home = () => {
               <img
                 src={bawana_books}
                 alt="logo"
-                className="w-40 rounded-md m-5  cursor-pointer 
+                className="w-40 rounded-md m-5  cursor-pointer max-[500px]:w-28 
                 hover:scale-110 transition duration-500 ease-in-out hover:drop-shadow-[0_35px_35px_rgba(204,102,0,0.4)] "
               />
               <img
                 src={wandana_books}
                 alt="logo"
-                className="w-40 rounded-md m-5   cursor-pointer 
+                className="w-40 rounded-md m-5   cursor-pointer max-[500px]:w-28 
                 hover:scale-110 transition duration-500 ease-in-out hover:drop-shadow-[0_35px_35px_rgba(204,102,0,0.4)] "
               />
             </div>
@@ -313,7 +365,7 @@ const Home = () => {
               <h1 className="text-lg font-semibold my-8 text-slate-800 ">
                 අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ
               </h1>
-              <p className="w-[90%] leading-loose ">
+              <p className="w-[90%] leading-loose  max-[500px]:w-[100%] max-[500px]:text-sm max-[500px]:leading-loose ">
                 ශ්‍රී කල්‍යාණි යෝගාශ්‍රම සංස්ථාවේ සමුත්පාදක කඩවැද්දුව ශ්‍රී
                 ජිනවංසාභිධාන මාහිමිපාණන් වහන්සේ විසින් 'යෝගාශ්‍රම සංස්ථාවේ හදවත'
                 යනුවෙන් හඳුන්වා සම්භාවනාවට පාත්‍ර කරන ලද්දා වූ ශ්‍රීමත් සුගත
@@ -340,21 +392,21 @@ const Home = () => {
         </div>
       </div>
 
-      <div className=" flex justify-center">
-        <div className="w-[80%] ">
+      <div className=" flex justify-center  ">
+        <div className="w-[80%]  max-[500px]:w-[95%] ">
           <p className="font-semibold">නිතර ශ්‍රවණය කරන දහම් කරුණු</p>
 
           <div className="my-5">
             {nitharaAsana.map((item: any) => {
               return (
                 <div key={item.id}>
-                  <div className="flex flex-row items-center border-b-2 py-2 justify-between  ">
+                  <div className="flex flex-row items-center border-b-2 py-2 justify-between ">
                     <div className=" items-center flex">
                       <img src={damma_icon} alt="" className="w-6 h-6" />
-                      <p className=" py-2 italic text-sm mx-4">{item.title}</p>
+                      <p className=" py-2 italic text-sm mx-4  ">{item.title}</p>
                     </div>
 
-                    <div className="flex items-center mr-20 ">
+                    <div className="flex items-center mr-20 max-[500px]:mr-1 ">
                       <IoMdTime className="mx-2" />
 
                       <p className="mr-8 text-slate-600">{item.time}</p>
@@ -371,21 +423,19 @@ const Home = () => {
                       </DrawerTrigger>
                         <DrawerContent>
                           <DrawerHeader>
-                            <DrawerTitle>{item.title}</DrawerTitle>
+                            <DrawerTitle><p className="my-4" >{item.title}</p></DrawerTitle>
                             <DrawerDescription>
                               <p className="text-xs">අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ විසින් සිදුකරන ලද දේශනාවකි.</p>
                             
                             </DrawerDescription>
                           </DrawerHeader>
                           <DrawerFooter>
-                            <ReactAudioPlayer
-                              src={audioSrc}
-                              autoPlay={true}
-                              muted={true}
-                              controls
-                            />
+                            {
+                              renderAudioPlayer()
+
+                            }
                             <DrawerClose>
-                              <button>Close</button>
+                              <button>වසන්න</button>
                             </DrawerClose>
                           </DrawerFooter>
                         </DrawerContent>
@@ -405,7 +455,7 @@ const Home = () => {
         <img src={lotus_end_img} alt="" className="w-40 opacity-90" />
       </div>
 
-      <div></div>
+     
     </>
   );
 };

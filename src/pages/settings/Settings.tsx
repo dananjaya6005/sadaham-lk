@@ -38,6 +38,7 @@ export default function Settings() {
   const [tags,setTags] = useState([] as string[]);
   const [link , setLink ] = useState('');
   const [tempTag , setTempTag] = useState('');
+  const [duration , setDuration] = useState('');
 
 
   console.log(tags)
@@ -72,7 +73,7 @@ export default function Settings() {
   async function storeData() {
     const { data } = await supabase
       .from('SadahamStore')
-      .insert({  name: name ,  description: description , tags : tags , link : link})
+      .insert({  name: name ,  description: description , tags : tags , link : link , duration : duration})
       console.log(data)
 }
 
@@ -136,10 +137,20 @@ export default function Settings() {
                 <SelectItem value="භාවනා">භාවනා</SelectItem>
                 <SelectItem value="කමටහන්">කමටහන්</SelectItem>
                 <SelectItem value="සාකච්ඡා">සාකච්ඡා</SelectItem>
+                <SelectItem value="ධම්මපදය">ධම්මපදය</SelectItem>
+                <SelectItem value="අනුමෝදනා">අනුමෝදනා</SelectItem>
+                <SelectItem value="අනුශාසනා">අනුශාසනා</SelectItem>
                 
               </SelectContent>
             </Select>
             </div>
+
+            
+            <div className="my-5">
+            <Label className="my-2" htmlFor="duration">ධාවන කාලය</Label>
+            <Input className="my-2" value={duration} onChange={(e)=>{setDuration(e.target.value)}} type="text" id="duration" placeholder="උදා : 10:00" />
+            </div>
+
 
             <Label className="my-2" htmlFor="tag">ටැග්</Label>
             <div className="flex ">
