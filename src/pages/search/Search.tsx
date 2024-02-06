@@ -7,6 +7,10 @@ import ReactAudioPlayer from 'react-audio-player';
 import { IoMdTime } from "react-icons/io";
 import damma_icon from '../../assets/icon_damma.png';
 import { FaCirclePlay } from "react-icons/fa6";
+import { FaBorderAll } from "react-icons/fa6";
+import { LiaRandomSolid } from "react-icons/lia";
+import { MdBorderAll } from "react-icons/md";
+
 
 
 
@@ -35,6 +39,8 @@ export default function Search() {
     const [searchTag, setSearchTag] = useState('');
     const [audio, setAudio] = useState('');
     const [audioSrc, setAudioSrc] = useState("");
+    const [dataFetchedStore, setDataFetchedStore] = useState([]);
+    const [secondarySearchParams , setSecondarySearchParams] = useState();
   
 
     const location  = useLocation();
@@ -46,10 +52,11 @@ export default function Search() {
       // Fetch data from Supabase
   useEffect(() => {
     const fetchData = async () => {
-      let { data: fetchedData } = await supabase
+      let { data , error } = await supabase
         .from('SadahamStore')
         .select('*');
-      setData(fetchedData);
+      setData(data.filter(item => item.tags.includes(searchParams)));
+      setDataFetchedStore(data);
       
       
     };
@@ -57,6 +64,13 @@ export default function Search() {
   }, []);
 
   const filteredData = data.filter(item => item.tags.includes(searchParams));
+
+
+  const secondarySearch = ()=>{
+    setData(dataFetchedStore.filter(item => item.tags.includes(searchTag)));
+     setSecondarySearchParams(searchTag);
+
+  }
 
 
 
@@ -122,13 +136,13 @@ export default function Search() {
                 />
                 <input
                   type="text"
-                  
+                  onChange={(e)=>{setSearchTag(e.target.value)}}
                   placeholder="දහම් කරුණු පිරික්සන්න ..."
                   className=" w-80  bg h-fit  px-5 py-2 shadow-lg rounded-r-lg "
                 />
               </div>
               <button
-              onClick={()=>{console.log('searching') }}
+              onClick={secondarySearch}
                 className="bg-amber-400 h-fit text-slate-800 font-semibold px-5 py-2 rounded-lg shadow-lg ml-5
               max-[500px]:w-fit max-[500px]:self-center max-[500px]:mt-5 "
               >
@@ -139,22 +153,35 @@ export default function Search() {
 
 
 
+        <div  className=' flex justify-center my-8 ' > 
+          <button className="bg-white hover:bg-grey text-grey-darkest py-2 px-2 rounded inline-flex items-center mx-5 ">
+          <MdBorderAll />
+            <span className='mx-2'>සියලු දේශනා</span>
+          </button>
 
+          <button className="bg-white hover:bg-grey text-grey-darkest py-2 px-2 rounded inline-flex items-center mx-5">
+          <LiaRandomSolid />
 
-            recevide params : {searchParams}
+            <span className='mx-2'>අහඹු දේශනා</span>
+          </button>
+         </div>
+
+    
         </div>
 
         <div className='max-[500px]:mx-10 text-center'>
-            <p className=' '> <span className='font-semibold text-blue-500 cursor-cell italic ' >{searchParams} </span>යන දහම් කරුණ සදහම් දේශනා ශ්‍රවණය කරන්න.</p>
+            <p className=' '> <span className='font-semibold text-blue-500 cursor-cell italic ' >
+              {secondarySearchParams ? secondarySearchParams : searchParams} {" "}
+              </span>යන දහම් කරුණ සදහම් දේශනා ශ්‍රවණය කරන්න.</p>
         </div>
 
         <div className=' w-[60%] my-9 max-[500px]:w-[93%] '>
 
           <div>
-            {filteredData.length === 0 ? <p className='text-center text-2xl my-10 text-slate-400'> <span className='text-red-400' >{searchParams}</span> කරුණු  සඳහා සදහම් දේශනා නොමැත. </p> : null } 
+            {data.length === 0 ? <p className='text-center text-2xl my-10 text-slate-400'> <span className='text-red-400' >{searchParams}</span> කරුණු  සඳහා සදහම් දේශනා නොමැත. </p> : null } 
           </div>
 
-        {filteredData.map(item => (
+        {data.map(item => (
                         <div key={item.id}>
                         <div className="flex flex-row items-center border-b-2 py-2 justify-between ">
                           <div className=" items-center flex">

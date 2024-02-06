@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/" >
         <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
           <NavBar />
           <MainRouter />

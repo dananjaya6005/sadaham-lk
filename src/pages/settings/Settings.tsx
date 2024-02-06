@@ -94,11 +94,16 @@ export default function Settings() {
   return (
     <>
       <h1 className="text-xl font-bold text-gray-700 my-5 text-center">
-        සැකසුම් පිටුව
+        සැකසුම් පිටුව ⚙️
       </h1>
+
+      <div  className="bg-slate-700 text-gray-100 font-semibold text-center p-2 m-5 rounded-xl">ගොනු උඩුගත කරන්න. 📁</div>
+
+      
 
 
       <div className=" flex justify-center  ">
+
         <div className=" flex justify-center flex-col  w-1/3	 " >
           <div className="grid w-full max-w-sm items-center gap-1.5 my-3 ">
             <Label className="my-2" htmlFor="name">පටිගත ගොනුවේ නාමය</Label>
@@ -210,11 +215,13 @@ export default function Settings() {
         </div>
       </div>
 
+        <br />
+          <hr />
+          <br />
 
-
-      <div className=" text-center flex justify-center flex-row ">
-        <div className="w-fit">
-          <div className=" w-fit">
+      <div className=" text-center flex justify-center  flex-row ">
+        <div className="w-1/3  ">
+          <div className=" w-full">
             <p className="my-5"> පසුබිම් තේමාව තෝරන්න</p>
             <RadioGroup
               onValueChange={(value) => {
@@ -234,7 +241,7 @@ export default function Settings() {
 
             <button
               onClick={updateBgImg}
-              className="bg-black px-4 py-2 rounded-full text-white my-5"
+              className="bg-gray-900 cursor-pointer w-full px-4 py-2 rounded-full text-white my-5"
             >
               යොමු කරන්න
             </button>
@@ -262,7 +269,7 @@ export default function Settings() {
 
             <button
               onClick={updateOpacity}
-              className="bg-black px-4 py-2 rounded-full text-white my-5"
+              className="bg-gray-900 cursor-pointer px-4 py-2 w-full rounded-full text-white my-5"
             >
               යොමු කරන්න
             </button>

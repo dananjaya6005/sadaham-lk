@@ -2,6 +2,8 @@
 import * as React from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import wandanaBooks from '@/assets/BannerLogo/wandana_books.png';
+import bawanaBooks from '@/assets/BannerLogo/bwana_books.png';
 
 import { cn } from "@/lib/utils"
 
@@ -111,16 +113,18 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        <NavigationMenuItem>
+        <NavigationMenuItem >
           <NavigationMenuTrigger> පොත්</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="grid gap-3  p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] ">
          
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/bawanaBooks" title="භාවනා"  >
+              වන්දනා පොත්  බැලමට මෙතනින් පිවිසෙන්න
+                 <img src={bawanaBooks} alt="bawana" className="w-24 my-2 self-center rounded-md " />
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/wandanaBooks" title="වන්දනා">
+              වන්දනා පොත්  බැලමට මෙතනින් පිවිසෙන්න
+                <img src={wandanaBooks} alt="wandana" className="w-24 my-2 self-center rounded-md " />
               </ListItem>
            
             </ul>

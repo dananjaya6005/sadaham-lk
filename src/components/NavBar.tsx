@@ -39,10 +39,12 @@ const NavBar = () => {
             </SheetTrigger>
             <SheetContent side="left" className="w-[75%]">
               <SheetHeader>
-                <SheetTitle>Are you absolutely sure?</SheetTitle>
+                <SheetTitle>සදහම් දේශනා</SheetTitle>
                 <SheetDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
+                  <div>
+                    <button className="bg-gray-100 px-6">සූත්‍ර</button>
+                  </div>
+                  
                 </SheetDescription>
               </SheetHeader>
             </SheetContent>

@@ -91,7 +91,7 @@ const nitharaAsana = [
   {
     title: "මේ ජීවිතයේදීම සෝවාන් ඵලය ලබමු",
     time: "12:10",
-    link: "https://sharedby.blomp.com/oMKqXx",
+    link: "https://drive.google.com/file/d/1aKzkOgjm3rkBQ970XiVHcAuWtQtpCeKh/view?usp=sharing",
   },
   {
     title: "පසුතැවෙන ඔබගේ මුලු ජීවිතයම වාසනාවන්ත, පුන්‍යවන්ත කරගන්නා ආකාරය",
@@ -286,7 +286,7 @@ const Home = () => {
                 <img
                   src={ayanna_logo}
                   alt="logo"
-                  className="w-10 h-10 rounded-l-lg  cursor-pointer "
+                  className="w-10  h-10 rounded-l-lg  cursor-pointer "
                 />
                 <input
                   type="text"
