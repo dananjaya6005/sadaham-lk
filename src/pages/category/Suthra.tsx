@@ -108,7 +108,7 @@ export default function Suthra() {
 
   return (
     <>
-
+ <div className=' min-h-screen'>
     < div className='w-screen bg-amber-200 py-4 flex justify-center shadow-lg  my-5'><p className='text-center text-slate-700 font-semibold w-[75%]'>අපගේ භාග්‍යවතුන් වහන්සේ විසින් දේශනා කරන්නට යෙදුනු උතුම් <span className='text-blue-500 cursor-pointer'>සූත්‍ර</span> දේශනා ඇසුරෙන් නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ විසින්  පවත්වන්නට යෙදුනු ධර්ම දේශනා</p></div>
 
 
@@ -164,6 +164,7 @@ export default function Suthra() {
                         </div>
                       </div>
       ))}
+    </div>
     </div>
     </div>
     </>

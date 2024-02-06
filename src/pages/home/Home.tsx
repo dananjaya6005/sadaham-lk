@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import ayanna_logo from "../../assets/ayannaLogo.png";
@@ -10,6 +10,10 @@ import ReactAudioPlayer from "react-audio-player";
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import { useNavigate } from "react-router";
 import AudioPlayer from 'react-h5-audio-player';
+import { ScrollArea } from "@/components/ui/scroll-area"
+import 'react-h5-audio-player/lib/styles.css';
+import testaudo from '../../assets/test.mp3';
+
 
 
 import {
@@ -91,7 +95,7 @@ const nitharaAsana = [
   {
     title: "මේ ජීවිතයේදීම සෝවාන් ඵලය ලබමු",
     time: "12:10",
-    link: "https://drive.google.com/file/d/1aKzkOgjm3rkBQ970XiVHcAuWtQtpCeKh/view?usp=sharing",
+    link: "https://pfcpiefhtaayktqkegvm.supabase.co/storage/v1/object/public/sadahamAudio/A%20simple%20audio%20player%20in%20React.%20Play,%20Pause,%20Previous,%20Next%20actions%20(64%20kbps).mp3?t=2024-02-06T11%3A38%3A25.641Z",
   },
   {
     title: "පසුතැවෙන ඔබගේ මුලු ජීවිතයම වාසනාවන්ත, පුන්‍යවන්ත කරගන්නා ආකාරය",
@@ -134,7 +138,6 @@ const Home = () => {
   const [bgImage, setBgImage] = useState();
 
   const [audioSrc, setAudioSrc] = useState("");
-
 
   const [SearchData, setSearchData] = useState<any>();
 
@@ -454,6 +457,13 @@ const Home = () => {
       <div className="my-10 flex justify-center">
         <img src={lotus_end_img} alt="" className="w-40 opacity-90" />
       </div>
+
+      <AudioPlayer
+    autoPlay
+    src={testaudo}
+    onPlay={e => console.log("onPlay")}
+    // other props here
+  />
 
      
     </>

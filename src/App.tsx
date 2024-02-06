@@ -1,6 +1,7 @@
 
 import MainRouter from "../MainRouter";
 import "./App.css";
+import Footer from './components/Footer';
 
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/NavBar";
@@ -13,10 +14,11 @@ function App() {
 
   return (
     <>
-      <BrowserRouter basename="/" >
+      <BrowserRouter >
         <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
           <NavBar />
           <MainRouter />
+          <Footer />
         </ClerkProvider>
       </BrowserRouter>
     </>
