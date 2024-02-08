@@ -1,6 +1,6 @@
 
 import { NavigationMenuDemo } from "../components/NavigationMenuDemo";
-import sadahamlk from "../assets/sadaham_logo.png";
+import sadahamlk from "../assets/Asset 2@4x.png";
 import { useNavigate } from "react-router";
 import { useUser } from "@clerk/clerk-react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -111,7 +111,7 @@ const NavBar = () => {
                   <hr />
 
                   <p className="my-4">සදහම් දේශනා වෙත  පිවිසෙන්න.</p>
-                  <ScrollArea className="h-96  ">
+                  <ScrollArea  className="h-96 max-[380px]:h-80  ">
                  {
                     slideNavBarItem.map((item,index)=>(
                       <div className="my-3" key={index}>
@@ -128,7 +128,7 @@ const NavBar = () => {
             </SheetContent>
           </Sheet>
         </div>
-        <img src={sadahamlk} alt="logo" className="w-14 h-14 mx-5 " />
+        <img src={sadahamlk} alt="logo" className="w-20 mx-5  " />
         <div className="max-[600px]:hidden">
           <NavigationMenuDemo />
         </div>

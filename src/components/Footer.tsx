@@ -1,27 +1,28 @@
-import footerLogo from '../assets/sadaham_logo.png'
+import footerLogo from '../assets/Asset 2@4x.png';
 
 const Footer = () => {
   return (
     <>
     <div>
-    <footer className="bg-gradient-to-t from-amber-200 to-yellow-50 border-t-2 border-amber-100">
+    <footer className="bg-gradient-to-t from-rose-200 to-yellow-50 border-t-2 border-rose-200">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-5">
         <div className="md:flex md:justify-between ">
-          <div className="mb-6 md:mb-0 flex items-center">
-            <a href="" className="flex items-center">
+          <div className="mb-6 md:mb-0 flex items-center justify-center">
+           
               <img
                 src={footerLogo}
-                className="w-28 h-28 max-[600px]:size-20  object-cover rounded-full mr-4 shadow-amber-600 shadow-md "
+                className="w-28  max-[600px]:w-20    mr-4  "
                 alt=""
               />
-              <h1 className="font-semibold max-[600px]:text-xl whitespace-nowrap text-slate-700 text-3xl w-40 h-20 mt-2">
-                සදහම්
-              </h1>
-            </a>
+              
+            
           </div>
+
+       
+
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-xl font-semibold text-gray-700 uppercase ">
+              <h2 className="mb-6  font-semibold text-gray-700 uppercase ">
                 සංචලනය
               </h2>
               <ul className="text-gray-500  font-medium">
@@ -48,7 +49,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-xl font-semibold text-gray-700 uppercase  ">
+              <h2 className="mb-6  font-semibold text-gray-700   ">
                 අප සමඟ එක් වන්න
               </h2>
               <ul className="text-gray-500  font-medium">
@@ -94,9 +95,9 @@ const Footer = () => {
           <span className="text-sm text-gray-500 sm:text-center ">
             © 2024{" "}
             <a href="https://flowbite.com/" className="hover:underline">
-              සදහම්
+              සදහම්{" "}
             </a>
-            . සියලුම අයිතිය සතුයි.
+            {" | "}හිමිකම් අවුරා නැත. - ධර්ම දානය පිණිස වන විවෘත මූලාශ්‍රයකි. අලෙවිය පිණිස හෝ ගැටීම් සඳහා භාවිතා නොකරන්න.
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0 bg-">
             <a

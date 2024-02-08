@@ -31,3 +31,9 @@
     height: 60vh;
   }
 }
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+  .handle_hero_responsive{
+    height: 70vh;
+  }
+}

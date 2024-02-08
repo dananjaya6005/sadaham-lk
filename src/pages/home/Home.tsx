@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import ayanna_logo from "../../assets/ayannaLogo.png";
@@ -7,14 +7,17 @@ import "./Home.css";
 import { FaCirclePlay } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
 import ReactAudioPlayer from "react-audio-player";
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
 import { useNavigate } from "react-router";
-import AudioPlayer from 'react-h5-audio-player';
-import { ScrollArea } from "@/components/ui/scroll-area"
-import 'react-h5-audio-player/lib/styles.css';
-import testaudo from '../../assets/test.mp3';
-
-
+import AudioPlayer from "react-h5-audio-player";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import "react-h5-audio-player/lib/styles.css";
+import testaudo from "../../assets/test.mp3";
 
 import {
   Drawer,
@@ -39,7 +42,7 @@ import suthra from "../../assets/BannerLogo/suthra.png";
 import winaya from "../../assets/BannerLogo/winaya.png";
 import bawana_books from "../../assets/BannerLogo/bwana_books.png";
 import wandana_books from "../../assets/BannerLogo/wandana_books.png";
-import swameenWahanse from "../../assets/swaminwahanse_logo.png";
+import swameenWahanse from "../../assets/swaminwahanse_Logo.jpg";
 import damma_icon from "../../assets/icon_damma.png";
 import lotus_end_img from "../../assets/lotus_end_img.png";
 
@@ -61,12 +64,12 @@ const damma_karunu_banner = [
 
   {
     image: abhidarma,
-    link: "/abhidarma",
+    link: "/abidarmaya",
   },
 
   {
     image: anumondana,
-    link: "/anumondana",
+    link: "/anumodhana",
   },
   {
     image: anushasana,
@@ -79,7 +82,7 @@ const damma_karunu_banner = [
   },
   {
     image: damma_padaya,
-    link: "/damma_padaya",
+    link: "/dammapadaya",
   },
   {
     image: kamatahan,
@@ -87,7 +90,7 @@ const damma_karunu_banner = [
   },
   {
     image: sakachcha,
-    link: "/sakachcha",
+    link: "/darma_sakachcha",
   },
 ];
 
@@ -95,23 +98,23 @@ const nitharaAsana = [
   {
     title: "මේ ජීවිතයේදීම සෝවාන් ඵලය ලබමු",
     time: "12:10",
-    link: "https://pfcpiefhtaayktqkegvm.supabase.co/storage/v1/object/public/sadahamAudio/A%20simple%20audio%20player%20in%20React.%20Play,%20Pause,%20Previous,%20Next%20actions%20(64%20kbps).mp3?t=2024-02-06T11%3A38%3A25.641Z",
+    link: "https://files.catbox.moe/wj78y7.mp3",
   },
   {
     title: "පසුතැවෙන ඔබගේ මුලු ජීවිතයම වාසනාවන්ත, පුන්‍යවන්ත කරගන්නා ආකාරය",
     time: "09:25",
-    link: "https://sharedby.blomp.com/6v2Jnc",
+    link: "https://files.catbox.moe/j8znz1.mp3",
   },
   {
     title: "සැමට ආකර්ෂනීය පුද්ගලයෙක් වීමේ පියවර",
     time: "22:55",
-    link: "https://sharedby.blomp.com/vek6Lq",
+    link: "https://files.catbox.moe/6wrjef.mp3",
   },
 
   {
     title: "කර්මය අපගේ ජීවිතයට බලපාන ආකාරය",
     time: "42:21",
-    link: "https://sharedby.blomp.com/iL409A",
+    link: "https://files.catbox.moe/v13f1s.mp3",
   },
 ];
 
@@ -141,7 +144,7 @@ const Home = () => {
 
   const [SearchData, setSearchData] = useState<any>();
 
-  const  navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getData();
@@ -217,51 +220,58 @@ const Home = () => {
   // console.warn(ThemeAplly[0]?.image);
 
   function getOperatingSystem() {
-    let operatingSystem = 'Not known';
-    if (window.navigator.appVersion.indexOf('Win') !== -1) { operatingSystem = 'Windows OS'; }
-    if (window.navigator.appVersion.indexOf('Mac') !== -1) { operatingSystem = 'MacOS'; }
-    if (window.navigator.appVersion.indexOf('X11') !== -1) { operatingSystem = 'UNIX OS'; }
-    if (window.navigator.appVersion.indexOf('Linux') !== -1) { operatingSystem = 'Linux OS'; }
-    if (/Android/.test(navigator.userAgent)) { operatingSystem = 'Android'; }
-    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) { operatingSystem = 'iOS'; }
+    let operatingSystem = "Not known";
+    if (window.navigator.appVersion.indexOf("Win") !== -1) {
+      operatingSystem = "Windows OS";
+    }
+    if (window.navigator.appVersion.indexOf("Mac") !== -1) {
+      operatingSystem = "MacOS";
+    }
+    if (window.navigator.appVersion.indexOf("X11") !== -1) {
+      operatingSystem = "UNIX OS";
+    }
+    if (window.navigator.appVersion.indexOf("Linux") !== -1) {
+      operatingSystem = "Linux OS";
+    }
+    if (/Android/.test(navigator.userAgent)) {
+      operatingSystem = "Android";
+    }
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+      operatingSystem = "iOS";
+    }
     return operatingSystem;
   }
 
-  const renderAudioPlayer = () => {
-    const os = getOperatingSystem();
-    if(os === 'Android' || os === 'Windows OS') {
-      return (
-      <div className=" flex justify-center">
-      <ReactAudioPlayer
-      className="w-1/2 max-[500px]:w-[95%] "
-      src={audioSrc}
-      autoPlay={true}
-      controls
-      />
-      </div>
-      );
-   }
-    else if(os === 'iOS') {
-      return (
-
-      <div className=" flex justify-center">
-      <audio controls className=""  >
-      <source src={audioSrc} type="audio/mpeg"/>
-      
-        Your browser does not support the audio element.
-      </audio> 
-      </div>
-      )
-    }
-  }
-
-
+  // const renderAudioPlayer = () => {
+  //   const os = getOperatingSystem();
+  //   if (os === "Android" || os === "Windows OS") {
+  //     return (
+  //       <div className=" flex justify-center">
+  //         <ReactAudioPlayer
+  //           className="w-1/2 max-[500px]:w-[95%] "
+  //           src={audioSrc}
+  //           autoPlay={true}
+  //           controls
+  //         />
+  //       </div>
+  //     );
+  //   } else if (os === "iOS") {
+  //     return (
+  //       <div className=" flex justify-center">
+  //         <audio controls className="">
+  //           <source src={audioSrc} type="audio/mpeg" />
+  //           Your browser does not support the audio element.
+  //         </audio>
+  //       </div>
+  //     );
+  //   }
+  // };
 
   return (
     <>
       <div
         style={{
-          backgroundImage: `url(${ThemeAplly[0]?.image})`,
+          backgroundImage: `url('https://pfcpiefhtaayktqkegvm.supabase.co/storage/v1/object/public/sadahamAsset/b284bf12e0.jpg')`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -278,14 +288,14 @@ const Home = () => {
         <div
           className={`w-screen bg-black flex ${extractOpacityData()}  justify-center items-center`}
         >
-          <div className="w-[80%] flex jus flex-col max-[600px]:w-[95%] ">
+          <div className="w-[80%]  flex jus flex-col max-[600px]:w-[95%] ">
             <p className="mt-10 text-2xl text-center font-bold  text-white max-[500px]:text-xl ">
               අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ විසින් සිදුකරන ලද
               ධර්ම දාන
             </p>
 
             <div className="flex rounded-md   mt-14 justify-center max-[500px]:flex-col  ">
-              <div className="flex">
+              <div className="flex  justify-center ">
                 <img
                   src={ayanna_logo}
                   alt="logo"
@@ -293,13 +303,17 @@ const Home = () => {
                 />
                 <input
                   type="text"
-                  onChange={(e)=>{setSearchData(e.target.value)}}
+                  onChange={(e) => {
+                    setSearchData(e.target.value);
+                  }}
                   placeholder="දහම් කරුණු පිරික්සන්න ..."
                   className=" w-80  h-fit  px-5 py-2 shadow-lg rounded-r-lg "
                 />
               </div>
               <button
-              onClick={()=>{navigate('/search', {state : {SearchData}}) }}
+                onClick={() => {
+                  navigate("/search", { state: { SearchData } });
+                }}
                 className="bg-amber-400 h-fit text-slate-800 font-semibold px-5 py-2 rounded-lg shadow-lg ml-5
               max-[500px]:w-fit max-[500px]:self-center max-[500px]:mt-5 "
               >
@@ -333,6 +347,9 @@ const Home = () => {
                   <div className="m-5 ">
                     <img
                       src={item.image}
+                      onClick={() => {
+                        navigate(item.link);
+                      }}
                       alt="logo"
                       className="w-28 h-28 shadow-lg object-cover border-2 border-amber-700 rounded-lg cursor-pointer 
                 hover:scale-110 transition duration-500 ease-in-out hover:drop-shadow-[0_35px_35px_rgba(204,102,0,0.4)] "
@@ -378,11 +395,15 @@ const Home = () => {
                 බෝධිසත්ව ගුණ සමන්වාගත අතිපූජනීය නාඋයනේ අරියධම්මාභිධාන ශ්‍රී ලංකා
                 රාමඤ්ඤ මහා නිකායේ අනුනායක මාහිමිපාණන් වහන්සේගේ ජීවන තොරතුරු
                 හිරුසඳු සෙයින් බෞද්ධ ලෝකයා අතර අතිශයින් ප්‍රකටව පවතින නමුදු, ඒ
-                මහෝත්තම ජීවන චරිතය සංක්ෂිප්තව මෙහි සටහන් කොට තබනුයේ එය සටහන්
-                නොකිරීමෙන් මෙම ලිපිපෙළ රන්කොත ගිලිහී ගිය සෑයක් සෙයින් ඌනභාවයට
-                පත් වන බැවිනි.
+                මහෝත්තම ජීවන චරිතය සංක්ෂිප්තව මෙහිද සටහන් කොට තබනුයේ එය තවත්
+                ගිහි පැවිදි බොහෝ දෙනාගේ යහපත පිණිසමය.
               </p>
-              <p className="text-blue-600 font-semibold my-5 cursor-pointer ">
+              <p
+                onClick={() => {
+                  navigate("/bio");
+                }}
+                className="text-blue-600 font-semibold my-5 cursor-pointer "
+              >
                 තවත් කියවන්න
               </p>
             </div>
@@ -406,7 +427,9 @@ const Home = () => {
                   <div className="flex flex-row items-center border-b-2 py-2 justify-between ">
                     <div className=" items-center flex">
                       <img src={damma_icon} alt="" className="w-6 h-6" />
-                      <p className=" py-2 italic text-sm mx-4  ">{item.title}</p>
+                      <p className=" py-2 italic text-sm mx-4  ">
+                        {item.title}
+                      </p>
                     </div>
 
                     <div className="flex items-center mr-20 max-[500px]:mr-1 ">
@@ -415,36 +438,44 @@ const Home = () => {
                       <p className="mr-8 text-slate-600">{item.time}</p>
 
                       <Drawer>
-                        <DrawerTrigger>   <FaCirclePlay
-                        onClick={() => {
-                          setAudioSrc(item.link);
-                        }}
-                        className="cursor-pointer mx-5"
-                        size={35}
-                        color="#663300"
-                      />
-                      </DrawerTrigger>
+                        <DrawerTrigger>
+                          {" "}
+                          <FaCirclePlay
+                            onClick={() => {
+                              setAudioSrc(item.link);
+                            }}
+                            className="cursor-pointer mx-5"
+                            size={35}
+                            color="#663300"
+                          />
+                        </DrawerTrigger>
                         <DrawerContent>
                           <DrawerHeader>
-                            <DrawerTitle><p className="my-4" >{item.title}</p></DrawerTitle>
+                            <DrawerTitle>
+                              <p className="my-4">{item.title}</p>
+                            </DrawerTitle>
                             <DrawerDescription>
-                              <p className="text-xs">අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ විසින් සිදුකරන ලද දේශනාවකි.</p>
-                            
+                              <p className="text-xs">
+                                අතිපූජනීය නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ
+                                විසින් සිදුකරන ලද දේශනාවකි.
+                              </p>
                             </DrawerDescription>
                           </DrawerHeader>
                           <DrawerFooter>
-                            {
-                              renderAudioPlayer()
 
-                            }
+                            <div>
+                              <AudioPlayer
+                                autoPlay
+                                src={item.link}
+                              />
+                            </div>
+
                             <DrawerClose>
                               <button>වසන්න</button>
                             </DrawerClose>
                           </DrawerFooter>
                         </DrawerContent>
                       </Drawer>
-
-                   
                     </div>
                   </div>
                 </div>
@@ -458,14 +489,6 @@ const Home = () => {
         <img src={lotus_end_img} alt="" className="w-40 opacity-90" />
       </div>
 
-      <AudioPlayer
-    autoPlay
-    src={testaudo}
-    onPlay={e => console.log("onPlay")}
-    // other props here
-  />
-
-     
     </>
   );
 };

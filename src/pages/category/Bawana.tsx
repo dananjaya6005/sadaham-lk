@@ -6,6 +6,9 @@ import ReactAudioPlayer from 'react-audio-player';
 import damma_icon from '../../assets/icon_damma.png';
 import { FaCirclePlay } from "react-icons/fa6";
 
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+
 
 import {
   Drawer,
@@ -111,8 +114,14 @@ export default function Bawana() {
 
     <div className=' min-h-screen'>
 
-    < div className='w-screen bg-amber-200 py-4 flex justify-center shadow-lg  my-5'><p className='text-center text-slate-700 font-semibold w-[75%]'>
-      අපගේ භාග්‍යවතුන් වහන්සේ විසින් දේශනා කරන්නට යෙදුනු උතුම් <span className='text-blue-500 cursor-pointer'>භාවනා</span> දේශනා ඇසුරෙන් නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ විසින්  පවත්වන්නට යෙදුනු ධර්ම දේශනා</p></div>
+    < div className='w-screen bg-amber-200 py-4 flex justify-center shadow-lg  my-5'>
+      <p className='text-center text-slate-700 font-semibold w-[75%]'>
+      පිරිසිදු ත්‍රිපිටකගත සූත්‍ර හා අටුවා ඇසුරෙන් නා උයනේ අරියධම්ම නාහිමිපාණන් වහන්සේ විසින් පවත්වන්නට යෙදුනු ධර්ම දේශනා
+      </p>
+      </div>
+
+      <p className='text-center my-8 text-xl font-semibold  text-blue-500' >භාවනා දේශනා</p>
+
 
 
     <div className=' w-screen flex justify-center my-10' >
@@ -151,10 +160,12 @@ export default function Bawana() {
                                   </DrawerDescription>
                                 </DrawerHeader>
                                 <DrawerFooter>
-                                  {
-                                    renderAudioPlayer()
-      
-                                  }
+                                <div>
+                              <AudioPlayer
+                                autoPlay
+                                src={audioSrc}
+                              />
+                            </div>
                                   <DrawerClose>
                                     <button>වසන්න</button>
                                   </DrawerClose>
