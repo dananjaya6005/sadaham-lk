@@ -118,11 +118,11 @@ export function NavigationMenuDemo() {
           <NavigationMenuContent>
             <ul className="grid gap-3  p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] ">
          
-              <ListItem href="/bawanaBooks" title="භාවනා"  >
+              <ListItem onClick={()=>{navigate('/books_bawana')}} title="භාවනා"  >
               වන්දනා පොත්  බැලමට මෙතනින් පිවිසෙන්න
                  <img src={bawanaBooks} alt="bawana" className="w-24 my-2 self-center rounded-md " />
               </ListItem>
-              <ListItem href="/wandanaBooks" title="වන්දනා">
+              <ListItem  onClick={()=>{navigate('/books_wandana')}} title="වන්දනා">
               වන්දනා පොත්  බැලමට මෙතනින් පිවිසෙන්න
                 <img src={wandanaBooks} alt="wandana" className="w-24 my-2 self-center rounded-md " />
               </ListItem>

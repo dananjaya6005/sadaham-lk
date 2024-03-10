@@ -1,11 +1,13 @@
 import {  Route, Routes } from 'react-router-dom';
 import Bio from './src/pages/bio/Bio';
 import Home from './src/pages/home/Home';
-import Book from './src/pages/books/Books';
+import Book from './src/pages/books/Books_bawana';
 import Settings from '@/pages/settings/Settings';
 import Login from './src/auth/Login';
 import Test from './src/pages/test/Test';
 import Search from './src/pages/search/Search';
+
+import Books_bawana from './src/pages/books/Books_bawana';
 
 //catergory
 
@@ -18,6 +20,7 @@ import Bawana from './src/pages/category/Bawana';
 import Kamatahan from './src/pages/category/Kamatahan';
 import Anumodhana from './src/pages/category/Anumodana';
 import Darma_sakachcha from './src/pages/category/Darma_sakachcha';
+import Books_wandana from './src/pages/books/Books_wandana';
 
 
 export default function MainRouter() {
@@ -32,6 +35,10 @@ export default function MainRouter() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/test" element={<Test/>}/>
           <Route path="/search" element={<Search/>}/>
+    
+
+          <Route path="/books_bawana" element={<Books_bawana/>}/>
+          <Route path="/books_wandana" element={<Books_wandana/>}/>
 
           <Route path="/dammapadaya" element={<Dammapadaya/>}/>
           <Route path="/anushasana" element={<Anushasana/>}/>

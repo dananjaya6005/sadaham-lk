@@ -6,18 +6,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import "./Home.css";
 import { FaCirclePlay } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
-import ReactAudioPlayer from "react-audio-player";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect";
+
 import { useNavigate } from "react-router";
 import AudioPlayer from "react-h5-audio-player";
-import { ScrollArea } from "@/components/ui/scroll-area";
+
 import "react-h5-audio-player/lib/styles.css";
-import testaudo from "../../assets/test.mp3";
+
+
+
 
 import {
   Drawer,
@@ -29,6 +25,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+
+
 
 //banner_logo_start_from_here
 import abhidarma from "../../assets/BannerLogo/adiadarmaya.png";
@@ -242,33 +240,11 @@ const Home = () => {
     return operatingSystem;
   }
 
-  // const renderAudioPlayer = () => {
-  //   const os = getOperatingSystem();
-  //   if (os === "Android" || os === "Windows OS") {
-  //     return (
-  //       <div className=" flex justify-center">
-  //         <ReactAudioPlayer
-  //           className="w-1/2 max-[500px]:w-[95%] "
-  //           src={audioSrc}
-  //           autoPlay={true}
-  //           controls
-  //         />
-  //       </div>
-  //     );
-  //   } else if (os === "iOS") {
-  //     return (
-  //       <div className=" flex justify-center">
-  //         <audio controls className="">
-  //           <source src={audioSrc} type="audio/mpeg" />
-  //           Your browser does not support the audio element.
-  //         </audio>
-  //       </div>
-  //     );
-  //   }
-  // };
+
 
   return (
     <>
+      
       <div
         style={{
           backgroundImage: `url('https://pfcpiefhtaayktqkegvm.supabase.co/storage/v1/object/public/sadahamAsset/b284bf12e0.jpg')`,
@@ -363,12 +339,14 @@ const Home = () => {
             <div className="flex">
               <img
                 src={bawana_books}
+                onClick={()=>{navigate('/books_bawana')}}
                 alt="logo"
                 className="w-40 rounded-md m-5  cursor-pointer max-[500px]:w-28 
                 hover:scale-110 transition duration-500 ease-in-out hover:drop-shadow-[0_35px_35px_rgba(204,102,0,0.4)] "
               />
               <img
                 src={wandana_books}
+                onClick={()=>{navigate('/books_wandana')}}
                 alt="logo"
                 className="w-40 rounded-md m-5   cursor-pointer max-[500px]:w-28 
                 hover:scale-110 transition duration-500 ease-in-out hover:drop-shadow-[0_35px_35px_rgba(204,102,0,0.4)] "
@@ -488,6 +466,7 @@ const Home = () => {
       <div className="my-10 flex justify-center">
         <img src={lotus_end_img} alt="" className="w-40 opacity-90" />
       </div>
+
 
     </>
   );
