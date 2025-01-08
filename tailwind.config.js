@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import * as tailwindAnimate from "tailwindcss-animate"
+
 export const darkMode = ["class"];
 export const content = [
   './pages/**/*.{ts,tsx}',
