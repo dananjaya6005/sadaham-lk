@@ -45,8 +45,8 @@ import damma_icon from "../../assets/icon_damma.png";
 import lotus_end_img from "../../assets/lotus_end_img.png";
 
 const supabase = createClient(
-  "https://pfcpiefhtaayktqkegvm.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmY3BpZWZodGFheWt0cWtlZ3ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDY0MTM2NjQsImV4cCI6MjAyMTk4OTY2NH0.0I7OqVZTG7vGX9w4NJNe55zsqUv2HJRVqPB7fUtqD9Q"
+  "https://jtfbpluaopseuxmtjonn.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0ZmJwbHVhb3BzZXV4bXRqb25uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzYyNjY5NjYsImV4cCI6MjA1MTg0Mjk2Nn0.IXv8YuHfLDXFuufY86STUFfDstdYVWI9JTtZj_0uDmk"
 );
 
 const damma_karunu_banner = [
@@ -119,7 +119,7 @@ const nitharaAsana = [
 const Theme1 = [
   {
     image:
-      "https://pfcpiefhtaayktqkegvm.supabase.co/storage/v1/object/public/sadahamAsset/cf78caa6ee.jpg",
+      "https://files.catbox.moe/603hc7.jpg",
     buttonPirmaryColor: "#F9A826",
   },
 ];
@@ -127,7 +127,7 @@ const Theme1 = [
 const Theme2 = [
   {
     image:
-      "https://pfcpiefhtaayktqkegvm.supabase.co/storage/v1/object/public/sadahamAsset/6910a413e5.jpg",
+      "https://files.catbox.moe/ayeeo7.jpg",
     buttonPirmaryColor: "red",
   },
 ];
@@ -247,7 +247,7 @@ const Home = () => {
       
       <div
         style={{
-          backgroundImage: `url('https://pfcpiefhtaayktqkegvm.supabase.co/storage/v1/object/public/sadahamAsset/b284bf12e0.jpg')`,
+          backgroundImage: `url('https://files.catbox.moe/603hc7.jpg')`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",

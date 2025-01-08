@@ -6,6 +6,7 @@ import { useUser } from "@clerk/clerk-react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import slideMenuBg  from '../assets/sildeMenuBg.png';
 import { ScrollArea } from "@/components/ui/scroll-area"
+import Loginbtn from "./loginbtn";
 
 
 const slideNavBarItem = [
@@ -141,6 +142,7 @@ const NavBar = () => {
         >
           පිවිසෙන්න
         </p>
+        
       </div>
     </>
   );
