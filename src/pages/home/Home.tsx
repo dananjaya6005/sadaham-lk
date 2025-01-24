@@ -247,7 +247,7 @@ const Home = () => {
       
       <div
         style={{
-          backgroundImage: `url('https://files.catbox.moe/603hc7.jpg')`,
+          backgroundImage: `url('https://files.catbox.moe/r12ixj.jpg')`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
