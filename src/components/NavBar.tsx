@@ -78,7 +78,7 @@ const NavBar = () => {
     <>
 
       <div
-        className="flex flex-row justify-between items-center shadow 
+        className="flex flex-row justify-between items-center shadow bg-
         py-2 border-b-2  "
       >
         <div className="hidden max-[600px]:flex ml-4 ">
@@ -129,7 +129,7 @@ const NavBar = () => {
             </SheetContent>
           </Sheet>
         </div>
-        <img src={sadahamlk} alt="logo" className="w-20 mx-5  " />
+        <img src='https://files.catbox.moe/lxpknu.jpg' alt="logo" className="w-24 mx-5  " />
         <div className="max-[600px]:hidden">
           <NavigationMenuDemo />
         </div>

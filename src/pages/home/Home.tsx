@@ -251,7 +251,6 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
-
           width: "100vw",
           display: "flex",
 
@@ -262,7 +261,7 @@ const Home = () => {
         className="handle_hero_responsive"
       >
         <div
-          className={`w-screen bg-black flex ${extractOpacityData()}  justify-center items-center`}
+          className={`w-screen bg-gradient-to-t from-yellow-800 via- to-transparent flex  justify-center items-center`}
         >
           <div className="w-[80%]  flex jus flex-col max-[600px]:w-[95%] ">
             <p className="mt-10 text-2xl text-center font-bold  text-white max-[500px]:text-xl ">

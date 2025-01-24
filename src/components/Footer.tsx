@@ -10,8 +10,8 @@ const Footer = () => {
           <div className="mb-6 md:mb-0 flex items-center justify-center">
            
               <img
-                src={footerLogo}
-                className="w-28  max-[600px]:w-20    mr-4  "
+                src='https://files.catbox.moe/c3shtd.png'
+                className="w-40  max-[600px]:w-24    mr-4  "
                 alt=""
               />
               
