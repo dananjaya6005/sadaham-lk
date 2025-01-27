@@ -218,7 +218,7 @@ export default function Settings() {
         <br />
           <hr />
           <br />
-
+{/* 
       <div className=" text-center flex justify-center  flex-row ">
         <div className="w-1/3  ">
           <div className=" w-full">
@@ -275,7 +275,7 @@ export default function Settings() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="fixed bottom-8 right-8">
         <MdLogout
