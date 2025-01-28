@@ -70,17 +70,31 @@ export default function Settings() {
 
 
   async function storeData() {
-    const { data } = await supabase
-      .from('SadahamStore')
-      .insert({  name: name ,  description: description , tags : tags , link : link , duration : duration});
-      console.log(data)
-
+  
+    try {
+      const { data, error } = await supabase
+        .from("SadahamStore")
+        .insert([
+          {
+            name: name,
+            description: description,
+            tags: tags,
+            link: link,
+            duration: duration,
+          },
+        ]);
+    } catch (error) {
+      console.log(error);
+    }
+    finally{
       setName('')
       setDescription('')
       setTags([])
       setLink('')
       setDuration('')
-      
+    }
+
+  
 
 
 }
