@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
@@ -19,6 +19,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+
 
 const supabase = createClient(
   "https://jtfbpluaopseuxmtjonn.supabase.co",
@@ -47,42 +49,44 @@ export default function Settings() {
 
 
 
-  async function updateOpacity() {
-    const { data } = await supabase
-      .from("Theme")
-      .update({ themeData: parseInt(bgOpacity) })
-      .eq("id", "bg_opacity");
+  // async function updateOpacity() {
+  //   const { data } = await supabase
+  //     .from("Theme")
+  //     .update({ themeData: parseInt(bgOpacity) })
+  //     .eq("id", "bg_opacity");
 
-    console.log(data);
-  }
+  //   console.log(data);
+  // }
 
-  async function updateBgImg() {
-    const { data } = await supabase
-      .from("Theme")
-      .update({ themeData: themeBgImg })
-      .eq("id", "themeBg_img");
+  // async function updateBgImg() {
+  //   const { data } = await supabase
+  //     .from("Theme")
+  //     .update({ themeData: themeBgImg })
+  //     .eq("id", "themeBg_img");
 
-    console.log(data);
-  }
+  //   console.log(data);
+  // }
 
-  useEffect(() => {
-    getData();
-  }, []);
 
 
   async function storeData() {
     const { data } = await supabase
       .from('SadahamStore')
-      .insert({  name: name ,  description: description , tags : tags , link : link , duration : duration})
+      .insert({  name: name ,  description: description , tags : tags , link : link , duration : duration});
       console.log(data)
+
+      setName('')
+      setDescription('')
+      setTags([])
+      setLink('')
+      setDuration('')
+      
+
+
 }
 
 
-  async function getData() {
-    const { data } = await supabase.from("SadahamStore").select();
-    console.log(data);
-    setData(data);
-  }
+
 
   function handleTagCLick(){
     setTags([...tags,tempTag])
